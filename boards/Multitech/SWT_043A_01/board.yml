@@ -1,0 +1,6 @@
+boards:
+  - name: swt_043a_01
+    full_name: Smartwave Technologies Platform Development Board
+    vendor: multitech
+    socs:
+      - name: efr32bg24a020f1024im40

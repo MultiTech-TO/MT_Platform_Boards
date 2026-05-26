@@ -1,0 +1,1 @@
+include("pre_dt_board.cmake")
