@@ -32,20 +32,17 @@
 			gpios = <&gpioc 0 GPIO_ACTIVE_HIGH>;
 			label = "LED 0";
 		};
-
 	};
 
 	buttons {
 		compatible = "gpio-keys";
 
 		button0: button_0 {
-			gpios = <&gpiov 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpioc 7 GPIO_ACTIVE_LOW>;
 			label = "User Push Button 0";
 			zephyr,code = <INPUT_KEY_0>;
 		};
-
 	};
-
 
 	exp_header: exp-header {
 		compatible = "silabs,exp-header";
@@ -101,7 +98,6 @@
 	pinctrl-0 = <&eusart1_default>;
 	pinctrl-names = "default";
 	status = "okay";
-
 };
 
 &i2c0 {
