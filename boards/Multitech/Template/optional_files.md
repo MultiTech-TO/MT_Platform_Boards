@@ -25,6 +25,9 @@ A `.svd` file maps the memory addresses on the SoC to registers for the debugger
 
 `.svd` files are available here [CMSIS Packs](https://www.keil.arm.com/packs/). Search for you part number and download the `.pack` file. You can unzip it as if it was `.zip` and it contains the `.svd` among other things.
 
+## Doc
+`Doc` is the documentation folder, a picture of the board (3D render or photo) should be included as well as a read me file that describes the board. See the [Template Doc Readme](doc/readme.md) for more details
+
 ## Kconfig.defconfig
 ```
 if BOARD_SWT_043A_01
@@ -72,7 +75,12 @@ config BOARD_SWT_043A_01
 This part is mandatory for boards as it selects the SoC on the board.
 
 
-##
+## [BOARD-PN]_defconfig
+Default configuration for the board. These settings should be low level settings that the board should have on to function. E.g. when compiling for EFR32BG24, pre-compiled libraries are used that use an FPU, therefore in `[BOARD-PN]_defconfig`, there must be `CONFIG_FPU=y` or the FPU won'y be enabled.
+
+
+## [BOARD-PN].yaml
+This is for a more detailed description of the board. If multiple boards are contained in the same direction, e.g. they are variants of each other, then both should be listed in this file.
 
 ## pre_dt_board.cmake
 An optional file that adds CMake code before the board does the devicetree (dt) compilation for the board. Often this file can be omitted.

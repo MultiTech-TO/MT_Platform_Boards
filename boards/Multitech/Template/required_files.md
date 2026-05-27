@@ -1,8 +1,15 @@
 # Table of contents
-1. [board.yml](#board.yml)
-2. [[BOARD].dts](#[BOARD].dts)
-    1. [Sub paragraph](#subparagraph1)
-3. [Kconfig.[BOARD]](#Kconfig.[BOARD])
+- [Table of contents](#table-of-contents)
+- [board.yml](#boardyml)
+- [\[BOARD\].dts](#boarddts)
+	- [\[BOARD\].dtsi](#boarddtsi)
+	- [\[BOARD\]-pinctrl.dtsi](#board-pinctrldtsi)
+		- [Example](#example)
+	- [\[BOARD\].dts](#boarddts-1)
+		- [Example](#example-1)
+	- [Multi-File Example](#multi-file-example)
+- [Kconfig.\[BOARD\]](#kconfigboard)
+	- [Example](#example-2)
 
 # board.yml
 ```
@@ -70,6 +77,14 @@ Creates 1 group for the sleep state of `EUSART`, which returns the pins to the d
 ## [BOARD].dts
 Describes what the peripherals are used for and the specific configurations for that purpose.
 
+### Example
+```
+&usart0 {
+	current-speed = <115200>;
+    ...
+};
+```
+Sets the baud rate for `usart0` to 115200
 
 ## Multi-File Example 
 
@@ -112,4 +127,11 @@ This sets `pinctrl-0` for peripheral to be `i2c0_default` from the `pinctrl` fil
 This ensures `i2c0` is enabled, then adds a node named `bme280` with unit address `76` to `i2c0`. It sets the node to be compatible with `bosch,bme280` which tells Zephyr it can treat this instance as a BME280 sensor from Bosch. Lastly, it sets the register to `76`. The format of `reg` varies based on the peripheral type but it is used to contain information about how to address the device. Therefore, for I2C `reg` is just the address, but it could contain other types of values for other peripherals 
 
 # Kconfig.[BOARD]
-Kconfig settings that are required for the board. E.g. the EFR32BG24 has an FPU and uses pre-compiled libraries from Silicon Labs that require it. Therefore you must have `CONFIG_FPU=y` in `Kconfig.[BOARD]`
+Kconfig options for the board.
+
+## Example
+```
+config BOARD_SWT_043A_01
+	select SOC_EFR32BG24A020F1024IM40
+```
+The config snippet above creates a configuration named `BOARD_SWT_043A_01` which if selected (set to "y"), will also set `SOC_EFR32BG24A020F1024IM40` to "y". This is mandatory because it tells the build system which SoC we are compiling for.
