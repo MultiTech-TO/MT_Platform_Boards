@@ -3,24 +3,4 @@
 # Copyright (c) 2025 Silicon Laboratories Inc.
 # SPDX-License-Identifier: Apache-2.0
 
-if BOARD_XG24_RB4186C || BOARD_XG24_RB4187C || BOARD_XGM240_RB4316A || BOARD_XGM240_RB4317A
 
-config LOG_BACKEND_SWO_FREQ_HZ
-	default 875000
-	depends on LOG_BACKEND_SWO
-
-config FPU
-	default y if SOC_GECKO_USE_RAIL || BT
-
-if BT
-
-config MAIN_STACK_SIZE
-	default 3072 if PM
-	default 2304
-
-endif # BT
-
-endif
-
-config BOARD_SWT_043A_01
-	select SOC_EFR32BG24A020F1024IM40

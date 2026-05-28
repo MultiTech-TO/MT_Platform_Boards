@@ -1,3 +1,15 @@
+# Table of contents
+- [Table of contents](#table-of-contents)
+  - [board.cmake](#boardcmake)
+  - [CMakeLists.txt](#cmakeliststxt)
+  - [\[SOC-PN\].svd](#soc-pnsvd)
+  - [Doc](#doc)
+  - [Kconfig.defconfig](#kconfigdefconfig)
+    - [Example](#example)
+  - [\[BOARD-PN\]\_defconfig](#board-pn_defconfig)
+  - [\[BOARD-PN\].yaml](#board-pnyaml)
+  - [pre\_dt\_board.cmake](#pre_dt_boardcmake)
+
 ## board.cmake  
 
 ```

@@ -1,0 +1,2 @@
+config TEMPLATE_BOARD
+	select TEMPLATE_SOC
