@@ -1,0 +1,30 @@
+&cpu0 {
+	clock-frequency = <DT_FREQ_K(78000)>;
+};
+
+&em01grpaclk {
+	clocks = <&hfrcodpll>;
+};
+
+&em01grpcclk {
+	clocks = <&hfrcodpll>;
+};
+
+&hfrcodpll {
+	clock-frequency = <DT_FREQ_K(78000)>;
+	clocks = <&hfxo>;
+	dpll-autorecover;
+	dpll-edge = "fall";
+	dpll-lock = "phase";
+	dpll-m = <1919>;
+	dpll-n = <3899>;
+};
+
+&hfxo {
+	status = "okay";
+	clock-frequency = <DT_FREQ_K(38400)>;
+};
+
+&sysclk {
+	clocks = <&hfrcodpll>;
+};

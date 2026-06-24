@@ -20,6 +20,7 @@
 };
 
 &radio {
+	status="okay";
 	pa-voltage-mv = <1800>;
 };
 
@@ -28,6 +29,8 @@
 		lora0 = &lora0;
 	};
 };
+
+
 
 &eusart1 {
 	status = "okay";
@@ -50,27 +53,18 @@
 	};
 };
 
-&i2c0 {
-	status = "okay";
-
-	bme280@76 {
-		compatible = "bosch,bme280";
-		status = "okay";
-		reg = <0x76>;
-	};
-
-	scd41@62 {
-		compatible = "sensirion,scd41";
-		status = "okay";
-		reg = <0x62>;
-		mode = <0>;
-	};
-};
-
 &usart0 {
 	current-speed = <115200>;
 	pinctrl-0 = <&usart0_default>;
 	pinctrl-1 = <&usart0_sleep>;
 	pinctrl-names = "default", "sleep";
 	status = "okay";
+};
+
+&pti{
+	status="okay";
+	pinctrl-0 = <&pti_default>;
+	pinctrl-names = "default";
+	clock-frequency  = <1600000>;
+	mode = "uart";
 };
