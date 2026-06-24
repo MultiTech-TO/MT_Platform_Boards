@@ -1,0 +1,65 @@
+/*
+ * Copyright (c) 2023 Antmicro <www.antmicro.com>
+ * Copyright (c) 2025 Silicon Laboratories Inc.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include <zephyr/dt-bindings/pinctrl/silabs/xg24-pinctrl.h>
+
+&pinctrl {
+	eusart1_default: eusart1_default {
+		group0 {
+			pins = <EUSART1_TX_PA4>, <EUSART1_SCLK_PA3>;
+			drive-push-pull;
+			output-high;
+		};
+
+		group1 {
+			pins = <EUSART1_RX_PA5>;
+			input-enable;
+			silabs,input-filter;
+		};
+	};
+
+	eusart1_sleep: eusart1_sleep {
+		group0 {
+			pins = <EUSART1_TX_PA4>, <EUSART1_RX_PA5>, <EUSART1_SCLK_PA3>;
+		};
+	};
+
+	pti_default: pti_default {
+		group0 {
+			pins = <PTI_DOUT_PC5>, <PTI_DFRAME_PC6>;
+			drive-push-pull;
+			output-high;
+		};
+	};
+
+	timer0_default: timer0_default {
+		group0 {
+			pins = <TIMER0_CC0_PB2>, <TIMER0_CC1_PB4>;
+			drive-push-pull;
+			output-low;
+		};
+	};
+
+	usart0_default: usart0_default {
+		group0 {
+			pins = <USART0_TX_PD3>;
+			drive-push-pull;
+			output-high;
+		};
+
+		group1 {
+			pins = <USART0_RX_PD2>;
+			input-enable;
+			silabs,input-filter;
+		};
+	};
+		usart0_sleep: usart0_sleep {
+		group0 {
+			pins = <USART0_TX_PD3>, <USART0_RX_PD2>;
+		};
+	};
+};

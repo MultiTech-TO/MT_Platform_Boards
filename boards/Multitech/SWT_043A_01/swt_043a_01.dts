@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2025 Silicon Laboratories Inc.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <silabs/xg24/efr32bg24a020f1024im40.dtsi>
+#include <zephyr/dt-bindings/lora/sx126x.h>
+
+#include "swt_043a_01.dtsi"
+
+/ {
+	model = "Smartwave Technologies Platform Development Board";
+	compatible = "multitech,swt_043a_01", "silabs,efr32bg24";
+};
+
+&dcdc {
+	silabs,pfmx-peak-current-milliamp = <120>;
+};
+
+&radio {
+	status="okay";
+	pa-voltage-mv = <1800>;
+};
+
+/ {
+	aliases {
+		lora0 = &lora0;
+	};
+};
+
+
+
+&eusart1 {
+	status = "okay";
+	pinctrl-0 = <&eusart1_default>;
+	pinctrl-1 = <&eusart1_sleep>;
+	pinctrl-names = "default", "sleep";
+	cs-gpios = <&gpioa 0 GPIO_ACTIVE_LOW>; // Here we set the cs pins to only the SX1262 CS pin
+
+	lora0: sx1262@0 {
+		compatible = "semtech,sx1262";
+		status = "okay";
+		reg = <0>; // reg 0 refers to the first element of cs-gpio
+		label = "sx1262";
+		reset-gpios = <&gpioa 6 GPIO_ACTIVE_LOW>;
+		busy-gpios = <&gpioa 7 GPIO_ACTIVE_HIGH>;
+		// rx-enable-gpios = <&gpiob 0 GPIO_ACTIVE_LOW>;
+		dio1-gpios = <&gpioa 8 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;
+		dio2-tx-enable;
+		spi-max-frequency = <1000000>;
+	};
+};
+
+&usart0 {
+	current-speed = <115200>;
+	pinctrl-0 = <&usart0_default>;
+	pinctrl-1 = <&usart0_sleep>;
+	pinctrl-names = "default", "sleep";
+	status = "okay";
+};
+
+&pti{
+	status="okay";
+	pinctrl-0 = <&pti_default>;
+	pinctrl-names = "default";
+	clock-frequency  = <1600000>;
+	mode = "uart";
+};

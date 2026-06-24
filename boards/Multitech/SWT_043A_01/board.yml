@@ -1,0 +1,6 @@
+boards:
+  - name: swt_043a_01
+    full_name: Multitech Platform Development Board (SWT-043A-01)
+    vendor: multitech
+    socs:
+      - name: efr32bg24a020f1024im40

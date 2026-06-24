@@ -1,0 +1,6 @@
+boards:
+  - name: template
+    full_name: template
+    vendor: multitech
+    socs:
+      - name: efr32bg24a020f1024im40

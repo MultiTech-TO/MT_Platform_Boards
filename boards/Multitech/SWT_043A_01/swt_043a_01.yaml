@@ -1,0 +1,23 @@
+identifier: swt_043a_01
+name: Multitech Platform Development Board (SWT-043A-01)
+type: mcu
+arch: arm
+ram: 128
+flash: 1024
+toolchain:
+  - zephyr
+  - gnuarmemb
+supported:
+  - bluetooth
+  - comparator
+  - counter
+  - dac
+  - dma
+  - entropy
+  - flash
+  - gpio
+  - pwm
+  - spi
+  - uart
+  - watchdog
+vendor: multitech
