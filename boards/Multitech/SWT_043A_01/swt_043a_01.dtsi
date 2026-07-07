@@ -64,16 +64,6 @@
 	status = "okay";
 };
 
-&eusart1 {
-	compatible = "silabs,eusart-spi";
-	#address-cells = <1>;
-	#size-cells = <0>;
-	clock-frequency = <DT_FREQ_M(10)>;
-	pinctrl-0 = <&eusart1_default>;
-	pinctrl-names = "default";
-	status = "okay";
-};
-
 &i2c0 {
 	status = "disabled";
 };
