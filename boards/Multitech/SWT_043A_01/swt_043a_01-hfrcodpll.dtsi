@@ -17,12 +17,12 @@
 	dpll-edge = "fall";
 	dpll-lock = "phase";
 	dpll-m = <1919>;
-	dpll-n = <3899>;
+	dpll-n = <3839>;
 };
 
 &hfxo {
 	status = "okay";
-	clock-frequency = <DT_FREQ_K(38400)>;
+	clock-frequency = <DT_FREQ_K(39000)>;
 };
 
 &sysclk {
