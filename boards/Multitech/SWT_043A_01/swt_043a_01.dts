@@ -34,7 +34,7 @@
 		status = "okay";
 		compatible = "gpio-leds";
 		hand_dect_led: led_1{
-			gpios = <&gpiob 00 GPIO_ACTIVE_LOW>;
+			gpios = <&gpioc 03 GPIO_ACTIVE_LOW>;
 			label = "Hand Detect LED";
 		};
 	};
@@ -84,7 +84,7 @@
 		label = "sx1262";
 		reset-gpios = <&gpioa 6 GPIO_ACTIVE_LOW>;
 		busy-gpios = <&gpioa 7 GPIO_ACTIVE_HIGH>;
-		// rx-enable-gpios = <&gpiob 0 GPIO_ACTIVE_LOW>;
+		rx-enable-gpios = <&gpiob 0 GPIO_ACTIVE_LOW>;
 		dio1-gpios = <&gpioa 8 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;
 		dio2-tx-enable;
 		spi-max-frequency = <1000000>;
@@ -182,6 +182,14 @@
 	};
 };
 
+&lfrco {
+	precision-mode;
+};
+
+&lfxo{
+	ctune=<0x64>;
+};
+
 &eusart1 {
 	compatible = "silabs,eusart-uart";
 	current-speed = <4800>;
@@ -196,7 +204,7 @@
 	pinctrl-0 = <&i2c0_default>;
 	pinctrl-names = "default";
 
-	scd41@62 {
+	co2_sensor: scd41@62 {
         compatible = "sensirion,scd41";
 		status = "okay";
         reg = <0x62>;
