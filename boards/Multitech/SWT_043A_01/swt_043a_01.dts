@@ -46,7 +46,7 @@
 		label = "sx1262";
 		reset-gpios = <&gpioa 6 GPIO_ACTIVE_LOW>;
 		busy-gpios = <&gpioa 7 GPIO_ACTIVE_HIGH>;
-		// rx-enable-gpios = <&gpiob 0 GPIO_ACTIVE_LOW>;
+		antenna-enable-gpios = <&gpiob 0 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
 		dio1-gpios = <&gpioa 8 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;
 		dio2-tx-enable;
 		spi-max-frequency = <1000000>;
